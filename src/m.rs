@@ -397,6 +397,12 @@ impl PlistConvertible for String {
     }
 }
 
+impl PlistConvertible for &String {
+    fn to_plist_value(self) -> plist::Value {
+        plist::Value::String(self.to_string())
+    }
+}
+
 impl PlistConvertible for &str {
     fn to_plist_value(self) -> plist::Value {
         plist::Value::String(self.to_string())
